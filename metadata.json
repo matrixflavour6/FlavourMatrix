@@ -1,0 +1,6 @@
+{
+  "name": "Flavour Matrix",
+  "description": "An interactive archive, laboratory dashboard, and subscriber community for food and culinary science enthusiasts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
