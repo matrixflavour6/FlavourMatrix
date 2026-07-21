@@ -1,63 +1,74 @@
-export interface Pairing {
-  ingredientId: string;
-  ingredientName: string;
-  matchScore: number; // 0 - 100
-  chemicalExplanation: string;
-  culinaryTip: string;
-}
+export type EraId = 'neolithic' | 'ancient' | 'medieval' | 'industrial' | 'modern';
 
-export interface FlavorProfile {
-  id: string;
+export interface Era {
+  id: EraId;
   name: string;
-  category: 'sweet' | 'sour' | 'salty' | 'bitter' | 'umami';
-  chemicalClass: string; // e.g., "Pyrazines", "Sulfides"
-  mainCompounds: string[]; // e.g., ["Dimethyl sulfide", "Furfurylthiol"]
+  range: string;
   description: string;
-  scienceExplanation: string;
-  pairings: Pairing[];
-}
-
-export interface Article {
-  id: string;
-  title: string;
-  summary: string;
-  content: string;
-  category: 'Molecular Gastronomy' | 'Fermentation & Acids' | 'Maillard & Heat' | 'Sensory Science' | 'Exclusive Protocols';
-  publishDate: string;
-  readTime: string;
-  isPremium: boolean;
+  longDescription: string;
+  themeColor: string; // Tailwind color class or hex
+  accentColor: string;
+  bgGradient: string;
   image: string;
-  scienceConcept: string; // Brief scientific focus highlight
+  scienceFocus: string;
+  evolutionImpact: string;
 }
 
-export interface CatalogIngredient {
+export type TasteProfile = 'Sweet' | 'Sour' | 'Salty' | 'Bitter' | 'Umami' | 'Pungent';
+
+export interface Ingredient {
+  id: string;
+  symbol: string; // e.g., "Cp" for Capsaicin
   name: string;
-  subCategory?: string;
-  chemicalCompounds: string[];
-  isInteractive: boolean;
-  profileId?: string;
+  taste: TasteProfile;
+  chemicalCompound: string; // e.g., Capsaicin, Acetic Acid
+  formula: string; // e.g., C18H27NO3
+  molecularWeight: number;
+  historicalAppearance: string; // Era or year
+  eraId: EraId;
+  discovery: string;
+  breakdown: string; // Chemical explanation
+  pairings: string[];
+  rarity: 'Common' | 'Rare' | 'Exotic';
+  wikiLink?: string; // High-quality educational resource link
 }
 
-export interface IngredientCategory {
-  id: 'sweet' | 'sour' | 'salty' | 'bitter' | 'umami';
+export interface ScienceTip {
+  title: string;
+  explanation: string;
+}
+
+export interface Recipe {
+  id: string;
   name: string;
-  chemicalSignatures: string[];
-  scientificDescription: string;
-  colorTheme: {
-    bg: string;
-    text: string;
-    border: string;
-    accent: string;
-    badge: string;
-  };
-  ingredients: CatalogIngredient[];
+  eraId: EraId;
+  image: string;
+  prepTime: string;
+  difficulty: 'Beginner' | 'Apprentice' | 'Master';
+  historicalContext: string;
+  scienceTips: ScienceTip;
+  ingredients: string[];
+  steps: string[];
 }
 
-export interface Subscriber {
-  email: string;
-  joinedDate: string;
-  isSubscribed: boolean;
-  rank: string; // e.g., "Flavor Initiate", "Alchemist", "Lab Director"
-  savedPairings: string[]; // ids of flavor profiles
-  savedArticles: string[]; // ids of articles
+export interface InstagramPost {
+  id: string;
+  image: string;
+  likes: number;
+  comments: number;
+  caption: string;
+  era: string;
+}
+
+export interface CMSContent {
+  heroTitle: string;
+  heroSubtitle: string;
+  missionTitle: string;
+  missionDescription: string;
+  missionCards: {
+    id: string;
+    title: string;
+    description: string;
+    iconName: string;
+  }[];
 }

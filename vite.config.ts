@@ -12,33 +12,11 @@ export default defineConfig(() => {
         '@': path.resolve(__dirname, '.'),
       },
     },
-    build: {
-      outDir: 'dist',
-      assetsDir: 'assets',
-      sourcemap: false,
-      minify: 'esbuild',
-      cssMinify: true,
-      rollupOptions: {
-        output: {
-          manualChunks(id) {
-            if (id.includes('node_modules')) {
-              if (id.includes('react') || id.includes('react-dom') || id.includes('scheduler')) {
-                return 'vendor-react';
-              }
-              if (id.includes('motion') || id.includes('lucide-react')) {
-                return 'vendor-ui';
-              }
-              return 'vendor'; // General third-party modules
-            }
-          }
-        }
-      }
-    },
     server: {
-      // HMR is disabled via DISABLE_HMR env var.
-      // Do not modifyâfile watching is disabled to prevent flickering.
+      // HMR is disabled in AI Studio via DISABLE_HMR env var.
+      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',
-      // Disable file watching when DISABLE_HMR is true to save CPU.
+      // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
     },
   };

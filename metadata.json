@@ -1,6 +1,6 @@
 {
-  "name": "Flavour Matrix",
-  "description": "An open-access archive, molecular gastronomy lab, and synergy pairing sandbox for food and culinary science enthusiasts.",
+  "name": "GastroChronicles",
+  "description": "Explore the culinary evolution, food chemistry, and historical recipes from the Neolithic Era to Molecular Gastronomy.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": []
 }
