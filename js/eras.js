@@ -3,7 +3,7 @@ const ERAS = [
   {
     id: 'neolithic',
     label: 'Neolithic',
-    years: '10,000 BCE',
+    years: '10,000–4,000 BCE',
     color: 'var(--era-1)',
     colorHex: '#B5583A',
     headline: 'Fire turned tough grain into something a body could <em>use</em>.',
@@ -13,7 +13,7 @@ const ERAS = [
   {
     id: 'ancient',
     label: 'Ancient Civ.',
-    years: '3000 BCE',
+    years: '4,000 BCE–500 CE',
     color: 'var(--era-2)',
     colorHex: '#C97A2E',
     headline: 'Rot, guided carefully, became a technology of flavor.',
@@ -23,7 +23,7 @@ const ERAS = [
   {
     id: 'medieval',
     label: 'Medieval',
-    years: '500–1500 CE',
+    years: '500–1,500 CE',
     color: 'var(--era-3)',
     colorHex: '#6B4E71',
     headline: 'Spice routes rewired what a continent thought "flavorful" meant.',
@@ -33,7 +33,7 @@ const ERAS = [
   {
     id: 'industrial',
     label: 'Industrial',
-    years: '1800s',
+    years: '1760–1900',
     color: 'var(--era-4)',
     colorHex: '#4C6B58',
     headline: 'Chemists in lab coats made kitchens run on precision, not luck.',
@@ -43,7 +43,7 @@ const ERAS = [
   {
     id: 'modern',
     label: 'Molecular',
-    years: '2000s→',
+    years: '1950–Present',
     color: 'var(--era-5)',
     colorHex: '#2FE6C9',
     headline: 'Now we cook with syringes, and call a gel "the sauce."',

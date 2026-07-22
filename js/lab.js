@@ -1,77 +1,87 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const matrix     = document.getElementById('matrix');
-  const emptyState = document.getElementById('matrixEmpty');
-  const tasteChips  = document.querySelectorAll('[data-taste]');
-  const compoundChips = document.querySelectorAll('[data-compound]');
-  const overlay    = document.getElementById('modalOverlay');
-  const modalCard  = document.getElementById('modalCard');
+  const matrix       = document.getElementById('matrix');
+  const emptyState    = document.getElementById('matrixEmpty');
+  const catChips      = document.querySelectorAll('[data-cat]');
+  const extendedToggle= document.getElementById('extendedToggle');
+  const overlay        = document.getElementById('modalOverlay');
+  const modalCard       = document.getElementById('modalCard');
 
-  let activeTaste = 'all';
-  let activeCompound = 'all';
+  let activeCat = 'all';
+  let showExtended = false;
 
   // ---- build tiles ----
-  INGREDIENTS.forEach(ing => {
-    const meta = TASTE_META[ing.taste];
+  COMPOUNDS.forEach(cmp => {
+    const meta = CATEGORY_META[cmp.category];
     const tile = document.createElement('button');
-    tile.className = 'tile';
+    tile.className = 'tile' + (cmp.core ? '' : ' extended-only');
     tile.style.setProperty('--tile-color', meta.color);
-    tile.dataset.taste = ing.taste;
-    tile.dataset.compound = ing.compound;
+    tile.dataset.cat = cmp.category;
     tile.innerHTML = `
-      <span class="num">${ing.discovered.match(/\d+/) ? ing.discovered.match(/[\d,]+/)[0] : ''}</span>
-      <span class="symbol">${ing.symbol}</span>
-      <span class="name">${ing.name}</span>
-      <span class="taste-tag">${meta.label}</span>
+      <span class="symbol">${cmp.symbol}</span>
+      ${cmp.core ? '<span class="core-flag" title="Core element"></span>' : ''}
+      <span class="name">${cmp.name}</span>
     `;
-    tile.addEventListener('click', () => openModal(ing));
+    tile.addEventListener('click', () => openModal(cmp));
     matrix.appendChild(tile);
   });
 
   function applyFilters(){
     let visible = 0;
     matrix.querySelectorAll('.tile').forEach(tile => {
-      const tasteMatch = activeTaste === 'all' || tile.dataset.taste === activeTaste;
-      const compoundMatch = activeCompound === 'all' || tile.dataset.compound === activeCompound;
-      const show = tasteMatch && compoundMatch;
+      const catMatch = activeCat === 'all' || tile.dataset.cat === activeCat;
+      const extendedOk = showExtended || !tile.classList.contains('extended-only');
+      const show = catMatch && extendedOk;
       tile.classList.toggle('hidden', !show);
       if (show) visible++;
     });
     emptyState.classList.toggle('show', visible === 0);
   }
 
-  tasteChips.forEach(chip => {
+  catChips.forEach(chip => {
     chip.addEventListener('click', () => {
-      activeTaste = chip.dataset.taste;
-      tasteChips.forEach(c => c.classList.toggle('active', c === chip));
+      activeCat = chip.dataset.cat;
+      catChips.forEach(c => c.classList.toggle('active', c === chip));
       applyFilters();
     });
   });
 
-  compoundChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      activeCompound = chip.dataset.compound;
-      compoundChips.forEach(c => c.classList.toggle('active', c === chip));
-      applyFilters();
-    });
+  extendedToggle.addEventListener('click', () => {
+    showExtended = !showExtended;
+    matrix.classList.toggle('show-extended', showExtended);
+    extendedToggle.classList.toggle('active', showExtended);
+    extendedToggle.querySelector('span').textContent = showExtended
+      ? 'Showing all 115 compounds'
+      : 'Show extended set (82 more)';
+    applyFilters();
   });
 
   // ---- modal ----
-  function openModal(ing){
-    const meta = TASTE_META[ing.taste];
+  function openModal(cmp){
+    const meta = CATEGORY_META[cmp.category];
     modalCard.style.setProperty('--modal-color', meta.color);
     modalCard.innerHTML = `
       <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
-      <div class="modal-symbol">${ing.symbol}</div>
-      <h3>${ing.name}</h3>
+      <div class="modal-symbol">${cmp.symbol}</div>
+      <h3>${cmp.name}</h3>
       <div class="modal-meta">
         <span>${meta.label}</span>
-        <span>${COMPOUND_META[ing.compound]}</span>
-        <span>${ing.discovered}</span>
+        <span>${cmp.core ? 'Core element' : 'Extended catalog'}</span>
       </div>
-      <p>${ing.note}</p>
-      <div class="modal-pairing">
-        <h4>Pairs well with</h4>
-        <div class="pairing-list">${ing.pairing.map(p => `<span>${p}</span>`).join('')}</div>
+      <div class="modal-field">
+        <h4>Chemical Formula</h4>
+        <p class="modal-formula">${cmp.formula}</p>
+      </div>
+      <div class="modal-field">
+        <h4>Molar Mass</h4>
+        <p>${cmp.molarMass}</p>
+      </div>
+      <div class="modal-field">
+        <h4>Biochemical Action</h4>
+        <p>${cmp.action}</p>
+      </div>
+      <div class="modal-field">
+        <h4>Cooking Uses</h4>
+        <p>${cmp.uses}</p>
       </div>
     `;
     overlay.classList.add('open');

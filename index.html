@@ -102,33 +102,56 @@
         <span class="era-num">01</span>
         <svg class="era-icon" viewBox="0 0 24 24"></svg>
         <h4>Neolithic</h4>
-        <span>10,000 BCE</span>
+        <span>10,000–4,000 BCE</span>
       </a>
       <a class="era-card" data-era="ancient" href="recipes.html?era=ancient">
         <span class="era-num">02</span>
         <svg class="era-icon" viewBox="0 0 24 24"></svg>
         <h4>Ancient Civ.</h4>
-        <span>3000 BCE</span>
+        <span>4,000 BCE–500 CE</span>
       </a>
       <a class="era-card" data-era="medieval" href="recipes.html?era=medieval">
         <span class="era-num">03</span>
         <svg class="era-icon" viewBox="0 0 24 24"></svg>
         <h4>Medieval</h4>
-        <span>500–1500 CE</span>
+        <span>500–1,500 CE</span>
       </a>
       <a class="era-card" data-era="industrial" href="recipes.html?era=industrial">
         <span class="era-num">04</span>
         <svg class="era-icon" viewBox="0 0 24 24"></svg>
         <h4>Industrial</h4>
-        <span>1800s</span>
+        <span>1760–1900</span>
       </a>
       <a class="era-card" data-era="modern" href="recipes.html?era=modern">
         <span class="era-num">05</span>
         <svg class="era-icon" viewBox="0 0 24 24"></svg>
         <h4>Molecular</h4>
-        <span>2000s→</span>
+        <span>1950–Present</span>
       </a>
     </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="section-pad" id="timeline">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Timeline Portal</p>
+      <h2>Fifteen milestones that rewired how humans eat.</h2>
+      <p>Filter by era to trace the discoveries — accidental and deliberate — that separate raw ingredients from cuisine.</p>
+    </div>
+
+    <div class="filter-bar reveal" id="timelineFilter">
+      <button class="chip active" data-tera="all"><span class="dot"></span>All eras</button>
+      <button class="chip" data-tera="neolithic" style="--chip-color:#B5583A"><span class="dot"></span>Neolithic</button>
+      <button class="chip" data-tera="ancient" style="--chip-color:#C97A2E"><span class="dot"></span>Ancient Civ.</button>
+      <button class="chip" data-tera="medieval" style="--chip-color:#6B4E71"><span class="dot"></span>Medieval</button>
+      <button class="chip" data-tera="industrial" style="--chip-color:#4C6B58"><span class="dot"></span>Industrial</button>
+      <button class="chip" data-tera="modern" style="--chip-color:#2FE6C9"><span class="dot"></span>Molecular</button>
+    </div>
+
+    <div class="timeline-list reveal reveal-stagger" id="timelineList"></div>
   </div>
 </section>
 
@@ -184,6 +207,7 @@
 </footer>
 
 <script src="js/eras.js"></script>
+<script src="js/timeline-data.js"></script>
 <script src="js/main.js"></script>
 <script src="js/home.js"></script>
 </body>

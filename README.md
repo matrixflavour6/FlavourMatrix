@@ -1,26 +1,33 @@
 # GastroChronicles — The Culinary Evolution
 
-A 3-page, animated food-science site: Home (with the interactive **Flavor Dial**), the **Alchemy Lab** (filterable ingredient matrix), and the **Recipe Vault** (era-filtered recipes with a science drawer). Pure HTML/CSS/JS — no build step, no dependencies.
+A 3-page, animated food-science site: Home (with the interactive **Flavor Dial** and **Timeline Portal**), the **Alchemy Lab** (a periodic table of 115 chemical compounds), and the **Recipe Vault** (54 recipes with cooking-mode step checkboxes and a chemical analysis drawer). Pure HTML/CSS/JS — no build step, no dependencies.
+
+## Content scale
+- **54 recipes** across 5 eras (11 / 11 / 11 / 11 / 10)
+- **115 compounds** in the Alchemy Lab (33 core + 82 extended), across 10 categories
+- **15 milestones** in the homepage Timeline Portal
+- Every recipe step is checkable in **Cooking Mode**; progress is saved per-browser via `localStorage`, so it persists across visits.
 
 ## File structure
 ```
 gastrochronicles/
-├── index.html          Home — hero, Flavor Dial, mission, era picker, IG strip
-├── lab.html             Alchemy Lab — taste/compound filters, ingredient tiles, modal
-├── recipes.html          Recipe Vault — sidebar filters, expandable recipe cards
+├── index.html           Home — hero, Flavor Dial, Timeline Portal, era picker, IG strip
+├── lab.html              Alchemy Lab — periodic table of 115 compounds, category filters, modal
+├── recipes.html           Recipe Vault — 54 recipes, era/difficulty filters, cooking mode
 ├── css/
-│   ├── style.css        shared design system (colors, type, nav, footer, buttons)
-│   ├── home.css
-│   ├── lab.css
-│   └── recipes.css
+│   ├── style.css          shared design system (colors, type, nav, footer, buttons)
+│   ├── home.css           hero, dial, mission, era picker, Timeline Portal
+│   ├── lab.css            periodic table tiles, category chips, compound modal
+│   └── recipes.css        sidebar, recipe cards, cooking-mode checkboxes
 └── js/
-    ├── eras.js           shared era data (used by home.js)
-    ├── main.js            shared scroll-reveal animation
-    ├── home.js
-    ├── lab-data.js
-    ├── lab.js
-    ├── recipes-data.js
-    └── recipes.js
+    ├── eras.js             shared era data (dial, era-picker)
+    ├── timeline-data.js     15 historical milestones
+    ├── main.js              shared scroll-reveal animation
+    ├── home.js              dial + era-picker + Timeline Portal logic
+    ├── lab-data.js           115 compounds across 10 categories
+    ├── lab.js                category filters, core/extended toggle, modal
+    ├── recipes-data.js        54 recipes across 5 eras
+    └── recipes.js             search/filters, cooking-mode checkboxes, localStorage
 ```
 
 ## Deploy to GitHub Pages
@@ -42,8 +49,9 @@ gastrochronicles/
 No build tools, npm install, or server needed — GitHub Pages just serves the static files as-is.
 
 ## Editing content
-- **Recipes:** edit the `RECIPES` array in `js/recipes-data.js`. Each entry needs an `era` matching one of `neolithic / ancient / medieval / industrial / modern`.
-- **Ingredients:** edit the `INGREDIENTS` array in `js/lab-data.js`.
+- **Recipes:** edit the `RECIPES` array in `js/recipes-data.js`. Each entry needs an `era` matching one of `neolithic / ancient / medieval / industrial / modern`, plus a `steps` array (used for cooking-mode checkboxes) and a `science` field (shown in the chemical analysis drawer).
+- **Compounds:** edit the `COMPOUNDS` array in `js/lab-data.js`. Each entry needs a `category` matching one of the 10 keys in `CATEGORY_META`, plus `formula`, `molarMass`, `action`, and `uses`. Set `core: true` for the ~33 that should show by default before the "Show extended set" toggle.
+- **Timeline milestones:** edit the `MILESTONES` array in `js/timeline-data.js`.
 - **Colors/type:** all design tokens live at the top of `css/style.css` under `:root`.
 
 ## About the CMS / admin panel

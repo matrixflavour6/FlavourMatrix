@@ -50,4 +50,34 @@ document.addEventListener('DOMContentLoaded', () => {
     card.style.setProperty('--card-color', era.color);
     card.querySelector('.era-icon').innerHTML = era.icon;
   });
+
+  // ---- Timeline Portal ----
+  const timelineList = document.getElementById('timelineList');
+  const timelineFilter = document.getElementById('timelineFilter');
+  if (timelineList && typeof MILESTONES !== 'undefined') {
+    MILESTONES.forEach((m, i) => {
+      const era = eraById(m.era);
+      const el = document.createElement('div');
+      el.className = 'milestone';
+      el.dataset.tera = m.era;
+      el.style.setProperty('--i', i);
+      el.style.setProperty('--m-color', era ? era.color : 'var(--era-5)');
+      el.innerHTML = `
+        <div class="milestone-year">${m.year}</div>
+        <h4>${m.title}</h4>
+        <p>${m.text}</p>
+      `;
+      timelineList.appendChild(el);
+    });
+
+    timelineFilter.addEventListener('click', (e) => {
+      const chip = e.target.closest('.chip');
+      if (!chip) return;
+      const tera = chip.dataset.tera;
+      timelineFilter.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c === chip));
+      timelineList.querySelectorAll('.milestone').forEach(m => {
+        m.classList.toggle('hidden', tera !== 'all' && m.dataset.tera !== tera);
+      });
+    });
+  }
 });

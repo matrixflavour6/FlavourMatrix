@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Alchemy Lab — GastroChronicles</title>
-<meta name="description" content="An interactive ingredient matrix organized by taste profile and chemical compound.">
+<meta name="description" content="A periodic table of 115 culinary chemical compounds, filterable by category, with formula, molar mass, and cooking uses.">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/lab.css">
 </head>
@@ -26,36 +26,42 @@
 </nav>
 
 <header class="lab-hero wrap">
-  <p class="eyebrow">The Food Alchemy Lab</p>
-  <h1>Eighteen ingredients, sorted by the chemistry that makes them taste like anything at all.</h1>
-  <p class="lede">Filter by taste profile first, then narrow by the compound family responsible for it. Tap any tile for its discovery story and how it's traditionally paired.</p>
+  <p class="eyebrow">The Periodic Table of Culinary Alchemy</p>
+  <h1>Every dish is downstream of a chemical category.</h1>
+  <p class="lede">33 core compounds load by default — like a compact periodic table of the kitchen. Expand to the full catalog of 115 for the deep cuts. Filter by category, then tap any tile for its formula, molar mass, and how it actually behaves in a pan.</p>
+
+  <div class="lab-stats">
+    <div><strong>115</strong><span>Total Compounds</span></div>
+    <div><strong>33</strong><span>Core Elements</span></div>
+    <div><strong>82</strong><span>Extended Catalog</span></div>
+    <div><strong>10</strong><span>Categories</span></div>
+  </div>
 </header>
 
 <main class="wrap">
   <div class="filter-bar">
-    <span class="filter-label">Taste profile</span>
-    <button class="chip active" data-taste="all"><span class="dot"></span>All</button>
-    <button class="chip" data-taste="sweet" style="--chip-color:#C97A2E"><span class="dot"></span>Sweet</button>
-    <button class="chip" data-taste="sour" style="--chip-color:#2FE6C9"><span class="dot"></span>Sour</button>
-    <button class="chip" data-taste="salty" style="--chip-color:#8FA6B8"><span class="dot"></span>Salty</button>
-    <button class="chip" data-taste="bitter" style="--chip-color:#6B4E71"><span class="dot"></span>Bitter</button>
-    <button class="chip" data-taste="umami" style="--chip-color:#4C6B58"><span class="dot"></span>Umami</button>
-    <button class="chip" data-taste="pungent" style="--chip-color:#B5583A"><span class="dot"></span>Pungent</button>
+    <span class="filter-label">Category</span>
+    <button class="chip active" data-cat="all"><span class="dot"></span>All</button>
+    <button class="chip" data-cat="starch" style="--chip-color:#C97A2E"><span class="dot"></span>Starch</button>
+    <button class="chip" data-cat="protein" style="--chip-color:#B5583A"><span class="dot"></span>Protein</button>
+    <button class="chip" data-cat="lipid" style="--chip-color:#D8B25C"><span class="dot"></span>Lipid</button>
+    <button class="chip" data-cat="acid" style="--chip-color:#2FE6C9"><span class="dot"></span>Acid</button>
+    <button class="chip" data-cat="salt" style="--chip-color:#8FA6B8"><span class="dot"></span>Salt</button>
+    <button class="chip" data-cat="sugar" style="--chip-color:#E39B9B"><span class="dot"></span>Sugar</button>
+    <button class="chip" data-cat="hydrocolloid" style="--chip-color:#4C6B58"><span class="dot"></span>Hydrocolloid</button>
+    <button class="chip" data-cat="enzyme" style="--chip-color:#7FA8D9"><span class="dot"></span>Enzyme</button>
+    <button class="chip" data-cat="flavor" style="--chip-color:#6B4E71"><span class="dot"></span>Flavor Compound</button>
+    <button class="chip" data-cat="preservative" style="--chip-color:#9C8B6F"><span class="dot"></span>Preservative</button>
   </div>
 
   <div class="filter-bar secondary">
-    <span class="filter-label">Chemical compound</span>
-    <button class="chip active" data-compound="all"><span class="dot"></span>All compounds</button>
-    <button class="chip" data-compound="sugars"><span class="dot"></span>Sugars</button>
-    <button class="chip" data-compound="acids"><span class="dot"></span>Acids</button>
-    <button class="chip" data-compound="salts"><span class="dot"></span>Salts</button>
-    <button class="chip" data-compound="alkaloids"><span class="dot"></span>Alkaloids</button>
-    <button class="chip" data-compound="glutamates"><span class="dot"></span>Glutamates</button>
-    <button class="chip" data-compound="pungent-compounds"><span class="dot"></span>Pungent Compounds</button>
+    <button class="toggle-extended" id="extendedToggle">
+      <span>Show extended set (82 more)</span>
+    </button>
   </div>
 
   <div class="matrix" id="matrix"></div>
-  <p class="matrix-empty" id="matrixEmpty">Nothing matches that combination — try a different compound filter.</p>
+  <p class="matrix-empty" id="matrixEmpty">Nothing matches that filter — try a different category, or expand the extended set.</p>
 </main>
 
 <footer>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Recipe Vault — GastroChronicles</title>
-<meta name="description" content="Historical recipes filterable by era, each with the science behind the technique.">
+<meta name="description" content="54 historical and modern recipes filterable by era and difficulty, each with a cooking mode and the chemistry behind the technique.">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/recipes.css">
 </head>
@@ -27,8 +27,14 @@
 
 <header class="recipes-hero wrap">
   <p class="eyebrow">The Chrono-Recipes Vault</p>
-  <h1>Ten dishes, five eras, one throughline of chemistry.</h1>
-  <p class="lede">Filter by era in the sidebar, then open any recipe for the method and the reaction that makes it work — from Maillard browning to modern spherification.</p>
+  <h1>54 dishes, five eras, one throughline of chemistry.</h1>
+  <p class="lede">Filter by era or difficulty in the sidebar, then open any recipe for cooking-mode step checkboxes and the chemical analysis behind the technique — from Maillard browning to enzymatic protein cross-linking.</p>
+
+  <div class="recipes-stats">
+    <div><strong>54</strong><span>Recipes</span></div>
+    <div><strong>5</strong><span>Eras</span></div>
+    <div><strong>12,000+</strong><span>Years Covered</span></div>
+  </div>
 </header>
 
 <main class="wrap dashboard">
@@ -41,7 +47,7 @@
       <button class="era-filter-item active" data-era="all">
         <span class="swatch" style="--swatch-color:#F7F3EA"></span>
         <span>All eras</span>
-        <span class="count">10</span>
+        <span class="count">54</span>
       </button>
       <button class="era-filter-item" data-era="neolithic">
         <span class="swatch" style="--swatch-color:#B5583A"></span>
@@ -69,11 +75,19 @@
         <span class="count"></span>
       </button>
     </div>
+
+    <h4>Difficulty</h4>
+    <div class="difficulty-filter-list" id="difficultyFilterList">
+      <button class="difficulty-chip active" data-difficulty="all">All levels</button>
+      <button class="difficulty-chip" data-difficulty="Easy">Easy</button>
+      <button class="difficulty-chip" data-difficulty="Medium">Medium</button>
+      <button class="difficulty-chip" data-difficulty="Advanced">Advanced</button>
+    </div>
   </aside>
 
   <div>
     <div class="recipe-grid" id="recipeGrid"></div>
-    <p class="no-results" id="noResults">No recipes match that search — try another term or era.</p>
+    <p class="no-results" id="noResults">No recipes match that search — try another term, era, or difficulty.</p>
   </div>
 </main>
 
