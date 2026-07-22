@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (eraParam && ERA_META[eraParam]) activeEra = eraParam;
 
   // ---- checkbox progress persistence ----
-  const STORAGE_KEY = 'gastrochronicles-recipe-progress';
+  const STORAGE_KEY = 'FlavourMatrix-recipe-progress';
   let progress = {};
   try {
     progress = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};

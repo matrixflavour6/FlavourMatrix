@@ -1,4 +1,4 @@
-# GastroChronicles — The Culinary Evolution
+# FlavourMatrix — The Culinary Evolution
 
 A 3-page, animated food-science site: Home (with the interactive **Flavor Dial** and **Timeline Portal**), the **Alchemy Lab** (a periodic table of 115 chemical compounds), and the **Recipe Vault** (54 recipes with cooking-mode step checkboxes and a chemical analysis drawer). Pure HTML/CSS/JS — no build step, no dependencies.
 
@@ -10,7 +10,7 @@ A 3-page, animated food-science site: Home (with the interactive **Flavor Dial**
 
 ## File structure
 ```
-gastrochronicles/
+FlavourMatrix/
 ├── index.html           Home — hero, Flavor Dial, Timeline Portal, era picker, IG strip
 ├── lab.html              Alchemy Lab — periodic table of 115 compounds, category filters, modal
 ├── recipes.html           Recipe Vault — 54 recipes, era/difficulty filters, cooking mode
@@ -33,12 +33,12 @@ gastrochronicles/
 ## Deploy to GitHub Pages
 
 1. Create a new GitHub repo (or use an existing one).
-2. Copy everything inside this `gastrochronicles/` folder into the **root** of that repo (so `index.html` sits at the repo root, not nested).
+2. Copy everything inside this `FlavourMatrix/` folder into the **root** of that repo (so `index.html` sits at the repo root, not nested).
 3. Commit and push:
    ```
    git init
    git add .
-   git commit -m "GastroChronicles site"
+   git commit -m "FlavourMatrix site"
    git branch -M main
    git remote add origin https://github.com/<your-username>/<your-repo>.git
    git push -u origin main
