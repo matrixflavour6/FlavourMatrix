@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recipe Vault — GastroChronicles</title>
+<meta name="description" content="Historical recipes filterable by era, each with the science behind the technique.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/recipes.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">GastroChronicles <span>SINCE 10,000 BCE</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="lab.html">Alchemy Lab</a>
+      <a href="recipes.html" class="active">Recipe Vault</a>
+    </div>
+    <a href="https://instagram.com" class="nav-cta" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+      Follow along
+    </a>
+  </div>
+</nav>
+
+<header class="recipes-hero wrap">
+  <p class="eyebrow">The Chrono-Recipes Vault</p>
+  <h1>Ten dishes, five eras, one throughline of chemistry.</h1>
+  <p class="lede">Filter by era in the sidebar, then open any recipe for the method and the reaction that makes it work — from Maillard browning to modern spherification.</p>
+</header>
+
+<main class="wrap dashboard">
+  <aside class="sidebar">
+    <h4>Search</h4>
+    <input type="text" class="search-box" id="searchBox" placeholder="Search recipes…">
+
+    <h4>Era</h4>
+    <div class="era-filter-list" id="eraFilterList">
+      <button class="era-filter-item active" data-era="all">
+        <span class="swatch" style="--swatch-color:#F7F3EA"></span>
+        <span>All eras</span>
+        <span class="count">10</span>
+      </button>
+      <button class="era-filter-item" data-era="neolithic">
+        <span class="swatch" style="--swatch-color:#B5583A"></span>
+        <span>Neolithic</span>
+        <span class="count"></span>
+      </button>
+      <button class="era-filter-item" data-era="ancient">
+        <span class="swatch" style="--swatch-color:#C97A2E"></span>
+        <span>Ancient Civ.</span>
+        <span class="count"></span>
+      </button>
+      <button class="era-filter-item" data-era="medieval">
+        <span class="swatch" style="--swatch-color:#6B4E71"></span>
+        <span>Medieval</span>
+        <span class="count"></span>
+      </button>
+      <button class="era-filter-item" data-era="industrial">
+        <span class="swatch" style="--swatch-color:#4C6B58"></span>
+        <span>Industrial</span>
+        <span class="count"></span>
+      </button>
+      <button class="era-filter-item" data-era="modern">
+        <span class="swatch" style="--swatch-color:#2FE6C9"></span>
+        <span>Molecular</span>
+        <span class="count"></span>
+      </button>
+    </div>
+  </aside>
+
+  <div>
+    <div class="recipe-grid" id="recipeGrid"></div>
+    <p class="no-results" id="noResults">No recipes match that search — try another term or era.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a href="index.html" class="brand">GastroChronicles</a>
+      <p style="margin-top:10px; max-width:32ch; color:rgba(247,243,234,.5); font-size:0.85rem;">A running history of food as applied chemistry.</p>
+    </div>
+    <div class="foot-cols">
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="lab.html">Alchemy Lab</a></li>
+          <li><a href="recipes.html">Recipe Vault</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <ul>
+          <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:30px;">
+    <small>© 2026 GastroChronicles. A project in food history &amp; chemistry.</small>
+  </div>
+</footer>
+
+<script src="js/recipes-data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/recipes.js"></script>
+</body>
+</html>
